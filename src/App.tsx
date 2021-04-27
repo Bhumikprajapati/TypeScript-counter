@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import  React from 'react';
 import './App.css';
+import FCCounter from "./components/FCCounter"
+export default class App extends React.Component<{}, { count: number }> {
+  state = { count: 0 };
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  render() {
+    return (
+      <div className='App'>
+      <FCCounter 
+        label={'Counter'}
+        count={this.state.count}
+        onIncrement={() => { this.setState({ count: this.state.count + 1 }); }}
+        onDecrement={()=>{this.setState({count:this.state.count-1})}}
+      />
+      </div>
+    );
+  }
 }
-
-export default App;
